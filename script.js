@@ -55,10 +55,12 @@ $("#save").click(function() {
   click.play()
   var xml = Blockly.Xml.workspaceToDom(workspace);
   var xml_text = Blockly.Xml.domToText(xml);
-  
+  var name = window.prompt("name");
+  store.setItem(name,xml_text);
 })
 $("#load").click(function() {
   click.play()
-  var xml = Blockly.Xml.textToDom(xml_text);
+  var name = window.prompt("name");
+  var xml = Blockly.Xml.textToDom(store.getItem(name));
   Blockly.Xml.domToWorkspace(xml, workspace);
 })
